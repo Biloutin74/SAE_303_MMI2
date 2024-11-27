@@ -28,8 +28,7 @@ function afficher_utilisateur (
             }
 
             // print_r($utilisateurs);
-            return "Voici la table des utilisateurs.";
-            print_r($utilisateurs);
+            return $utilisateurs;
 
         } catch (PDOException $e) {
             return "Erreur : " . $e->getMessage();
@@ -62,8 +61,7 @@ function afficher_materiel (
             }
     
             // print_r($materiels);
-            return "Voici la table des materiels.";
-            print_r($materiels);
+            return $materiels;
     
         } catch (PDOException $e) {
             return "Erreur : " . $e->getMessage();
@@ -95,8 +93,7 @@ function afficher_reservation (
             }
         
             // print_r($reservations);
-            return "Voici la table des réservations.";
-            print_r($reservations);
+            return $reservations;
         
         } catch (PDOException $e) {
             return "Erreur : " . $e->getMessage();
@@ -127,8 +124,7 @@ function afficher_categorie (
             }
             
             // print_r($categories);
-            return "Voici la table des catégories.";
-            print_r($categories);
+            return $categories;
             
         } catch (PDOException $e) {
             return "Erreur : " . $e->getMessage();
