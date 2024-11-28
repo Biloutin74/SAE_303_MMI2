@@ -1,7 +1,7 @@
 <?php
-    require("afficher_image_categorie.php");
+    require("afficher_categorie.php");
 
-    $donnees = afficher_image_categorie();
+    $donnees = afficher_categorie();
       
     // print_r($donnees);
 ?>
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Page de réservation</title> 
-    <link rel="stylesheet" href="css/reservation.css"> 
+    <link rel="stylesheet" href="css/reservation.css">
 </head>
 <body>
     <!-- En-tête de la page -->
@@ -41,10 +41,10 @@
                         foreach ($donnees as $categorie) {
                             // Extraire les données pour chaque catégorie
                             $image_base64 = $categorie['image_base64'];
-                            $nom = htmlspecialchars($categorie['nom']);
+                            $nom = (string) htmlspecialchars($categorie['nom']);
                             $mime_type = "image/jpeg"; // Vous pouvez ajuster dynamiquement si nécessaire
-                            $page_url = $categorie['url'] ?? "#"; // Utilisez une clé spécifique pour le lien si disponible
-                            $id = $categorie['idcat'];
+                            $page_url = (string) $categorie['url'] ?? "#"; // Utilisez une clé spécifique pour le lien si disponible
+                            $id = (int) $categorie['idcat'];
 
                             echo "
                             <div class='photo'>

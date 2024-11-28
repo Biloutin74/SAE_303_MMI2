@@ -1,7 +1,7 @@
 <?php
     require("afficher_materiel.php");
 
-    $donnees = afficher_camera();
+    $donnees = afficher_materiel();
       
     // print_r($donnees);
 
@@ -25,7 +25,7 @@
     <!-- En-tête de la page -->
     <header>
         <nav>
-            <a href="reservation.html" class="fleche">&#8592;</a>
+            <a href="categorie.php" class="fleche">&#8592;</a>
         </nav>
     </header>
 
@@ -43,12 +43,12 @@
                             if ($materiel['idcat'] == $url_id_cat) {
                                 // Extraire les données pour chaque matériel
                                 $image_base64 = $materiel['image_base64'];
-                                $nom = htmlspecialchars($materiel['nom']);
-                                $description = htmlspecialchars($materiel['description']);
+                                $nom = (string) htmlspecialchars($materiel['nom']);
+                                $description = (string) htmlspecialchars($materiel['description']);
                                 $mime_type = "image/jpeg"; // Vous pouvez ajuster dynamiquement si nécessaire
-                                $page_url = $materiel['url'] ?? "#"; // Utilisez une clé spécifique pour le lien si disponible
-                                $id = $materiel['idmat'];
-                                $id_cat = $materiel['idcat'];
+                                $page_url = (string) $materiel['url'] ?? "#"; // Utilisez une clé spécifique pour le lien si disponible
+                                $id = (int) $materiel['idmat'];
+                                $id_cat = (int) $materiel['idcat'];
 
                                 echo "
                                 <div class='photo'>

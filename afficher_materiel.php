@@ -1,30 +1,32 @@
 <?php
 require("connexion.php");
 
-function afficher_categorie (
+function afficher_materiel (
 
     ) {
         global $pdo;
     
         try{
     
-            $sql = "SELECT idcat, image, nom, url FROM sae_303_categorie";
+            $sql = "SELECT idmat, image, nom, description, url, categorie_idcat FROM sae_303_materiel";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             
-            $categories = [];
+            $materiels = [];
 
             while ($donnees = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $categories[] = [
-                    'idcat' => (int) $donnees['idcat'],
+                $materiels[] = [
+                    'idmat' => (int) $donnees['idmat'],
                     'image_base64' => base64_encode($donnees['image']),
                     'nom' => (string) $donnees['nom'],
+                    'description' => (string) $donnees['description'],
                     'url' => (string) $donnees['url'],
+                    'idcat' => (int) $donnees['categorie_idcat']
                 ];
             }
     
-            // print_r($categories);
-            return $categories;
+            // print_r($materiels);
+            return $materiels;
     
         } catch (PDOException $e) {
             return "Erreur : " . $e->getMessage();
