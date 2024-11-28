@@ -76,6 +76,7 @@
                             $materiel_image_base64 = $materiel['image_base64'];
                             $materiel_nom = htmlspecialchars((string)$materiel['nom']);
                             $materiel_description = htmlspecialchars((string)$materiel['description']);
+                            $materiel_url = htmlspecialchars((string)$materiel['url']);
                             $materiel_etat = htmlspecialchars((string)$materiel['etat']);
                             $materiel_visible = (int)$materiel['visible'];
                             $materiel_categorie_idcat = (int)$materiel['categorie_idcat'];
@@ -89,6 +90,7 @@
                             echo "<td><img src='data:" . $materiel_mime_type . ";base64," . $materiel_image_base64 . "' alt='" . $materiel_nom . "' style='width:100px; height:auto;'></td>";
                             echo "<td>" . $materiel_nom . "</td>";
                             echo "<td>" . $materiel_description . "</td>";
+                            echo "<td>" . $materiel_url . "</td>";
                             echo "<td>" . $materiel_etat . "</td>";
                             echo "<td>" . $materiel_visible . "</td>";
                             echo "<td>" . $materiel_categorie_idcat . "</td>";
@@ -145,6 +147,7 @@
                             $categorie_image_base64 = $categorie['image_base64'];
                             $categorie_nom = htmlspecialchars((string)$categorie['nom']);
                             $categorie_description = htmlspecialchars((string)$categorie['description']);
+                            $categorie_url = htmlspecialchars((string)$categorie['url']);
                             $categorie_visible = (int)$categorie['visible'];
                     
                             // Déduire le type MIME (vous pourriez le déduire dynamiquement si disponible)
@@ -156,6 +159,7 @@
                             echo "<td><img src='data:" . $categorie_mime_type . ";base64," . $categorie_image_base64 . "' alt='" . $categorie_nom . "' style='width:100px; height:auto;'></td>";
                             echo "<td>" . $categorie_nom . "</td>";
                             echo "<td>" . $categorie_description . "</td>";
+                            echo "<td>" . $categorie_url . "</td>";
                             echo "<td>" . $categorie_visible . "</td>";
                             echo "</tr>";
                         }

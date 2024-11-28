@@ -40,13 +40,15 @@ function creer_categorie(
             }
 
                 // Insère une nouvelle catégorie
-                $sql2 = "INSERT INTO sae_303_categorie (image, nom, description) VALUES (:image_categorie_cree_blob, :nom_categorie_cree, :description_categorie_cree)";
+                $sql2 = "INSERT INTO sae_303_categorie (image, nom, description, url, visible) VALUES (:image_categorie_cree_blob, :nom_categorie_cree, :description_categorie_cree, :url_categorie_cree, :visible_categorie_cree)";
                 $stmt2 = $pdo->prepare($sql2);
 
                 $stmt2->execute([
                     ':image_categorie_cree_blob' => $image_categorie_cree_blob,
                     ':nom_categorie_cree' => $nom_categorie_cree,
                     ':description_categorie_cree' => $description_categorie_cree,
+                    ':url_categorie_cree' => (string) "materiel.php",
+                    ':visible_categorie_cree' => (int) 0,
                 ]);
 
             return "Succès : La catégorie a été créée avec l'ID " . $pdo->lastInsertId();

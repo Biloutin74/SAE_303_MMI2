@@ -41,13 +41,16 @@ function creer_materiel(
         }
 
         // Insère un nouveau matériel
-        $sql2 = "INSERT INTO sae_303_materiel (image, nom, description, categorie_idcat) VALUES (:image_materiel_cree_blob, :nom_materiel_cree, :description_materiel_cree, :categorie_id)";
+        $sql2 = "INSERT INTO sae_303_materiel (image, nom, description, url, etat, visible, categorie_idcat) VALUES (:image_materiel_cree_blob, :nom_materiel_cree, :description_materiel_cree, :url_materiel_cree, :etat_materiel_cree, :visible_materiel_cree, :categorie_id)";
         $stmt2 = $pdo->prepare($sql2);
 
         $stmt2->execute([
             ':image_materiel_cree_blob' => $image_materiel_cree_blob,
             ':nom_materiel_cree' => $nom_materiel_cree,
             ':description_materiel_cree' => $description_materiel_cree,
+            ':url_materiel_cree' => (string) "reservation.php",
+            ':etat_materiel_cree' => (string) "en maintenance",
+            ':visible_materiel_cree' => (int) 0,
             ':categorie_id' => $categorie_id,
         ]);
 

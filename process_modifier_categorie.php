@@ -7,6 +7,7 @@
         $new_image_size = filesize($new_image_path); // Taille du fichier
         $new_nom = $_POST['new_nom'];
         $new_description = $_POST['new_description'];
+        $new_url = $_POST['new_url'];
         $cacher = $_POST['value_cacher'];
         $supprimer = $_POST['value_supprimer'];
 
@@ -16,6 +17,7 @@
             $new_image_size,
             $new_nom,
             $new_description,
+            $new_url,
             $cacher,
             $supprimer
         );
@@ -49,6 +51,9 @@
 
             <label for="description_modif">Nouvelle Description :</label><br>
             <input type="text" id="new_description" name="new_description"><br>
+
+            <label for="url_modif">Nouvelle URL :</label><br>
+            <input type="text" id="new_url" name="new_url"><br>
 
             <label for="cacher">Cacher</label>
             <input type="checkbox" id="value_cacher" name="value_cacher" value="1"><br>

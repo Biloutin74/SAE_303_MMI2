@@ -7,6 +7,7 @@ function modifier_materiel(
     $new_image_size,
     $new_nom,
     $new_description,
+    $new_url,
     $new_etat,
     $new_categorie,
     $cacher,
@@ -65,14 +66,35 @@ function modifier_materiel(
             $new_image_blob = null; // Garde l'image actuelle si aucune nouvelle image n'est fournie
         }
 
+        if ($new_nom == "") {
+            $new_nom = null;
+        }
+
+        if ($new_description == "") {
+            $new_description = null;
+        }
+
+        if ($new_url == "") {
+        $new_url = null;
+        }
+
+        if ($new_etat == "") {
+            $new_etat = null;
+        }
+
+        if ($new_categorie == "") {
+            $new_categorie_id = null;
+        }
+
         // Mise à jour du matériel
-        $sql4 = "UPDATE sae_303_materiel SET image = COALESCE(:new_image_blob, image), nom = COALESCE(:new_nom, nom), description = COALESCE(:new_description, description), etat = COALESCE(:new_etat, etat), categorie_idcat = COALESCE(:new_categorie_id, categorie_idcat), visible = :visible WHERE idmat = :id_materiel";
+        $sql4 = "UPDATE sae_303_materiel SET image = COALESCE(:new_image_blob, image), nom = COALESCE(:new_nom, nom), description = COALESCE(:new_description, description), url = COALESCE(:new_url, url), etat = COALESCE(:new_etat, etat), categorie_idcat = COALESCE(:new_categorie_id, categorie_idcat), visible = :visible WHERE idmat = :id_materiel";
         $stmt4 = $pdo->prepare($sql4);
 
         $stmt4->execute([
             ':new_image_blob' => $new_image_blob,
             ':new_nom' => $new_nom, 
             ':new_description' => $new_description,
+            ':new_url' => $new_url,
             ':new_etat' => $new_etat,
             ':new_categorie_id' => $new_categorie_id,
             ':visible' => $cacher ? 0 : 1,

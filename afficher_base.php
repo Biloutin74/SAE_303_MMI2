@@ -54,6 +54,7 @@ function afficher_materiel (
                     'image_base64' => base64_encode($donnees2['image']),
                     'nom' => $donnees2['nom'], 
                     'description' => $donnees2['description'],
+                    'url' => $donnees2['url'],
                     'etat' => $donnees2['etat'], 
                     'visible' => (int)$donnees2['visible'],
                     'categorie_idcat' => (int)$donnees2['categorie_idcat']
@@ -119,6 +120,7 @@ function afficher_categorie (
                     'image_base64' => base64_encode($donnees4['image']),
                     'nom' => $donnees4['nom'],
                     'description' => $donnees4['description'],
+                    'url' => $donnees4['url'],
                     'visible' => (int)$donnees4['visible']
                 ];
             }

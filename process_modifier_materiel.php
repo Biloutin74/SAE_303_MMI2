@@ -7,6 +7,7 @@
         $new_image_size = filesize($new_image_path); // Taille du fichier
         $new_nom = $_POST['new_nom'];
         $new_description = $_POST['new_description'];
+        $new_url = $_POST['new_url'];
         $new_etat = $_POST['new_etat'];
         $new_categorie = $_POST['new_categorie'];
         $cacher = $_POST['value_cacher'];
@@ -18,6 +19,7 @@
             $new_image_size,
             $new_nom,
             $new_description,
+            $new_url,
             $new_etat,
             $new_categorie,
             $cacher,
@@ -53,6 +55,9 @@
 
             <label for="description_modif">Nouvelle Description :</label><br>
             <input type="text" id="new_description" name="new_description"><br>
+
+            <label for="url_modif">Nouvelle URL :</label><br>
+            <input type="text" id="new_url" name="new_url"><br>
 
             <label for="etat_modif">Nouvel État :</label><br>
             <select name="new_etat" id="new_etat">

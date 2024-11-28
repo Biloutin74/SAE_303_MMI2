@@ -7,6 +7,7 @@ function modifier_categorie(
     $new_image_size,
     $new_nom,
     $new_description,
+    $new_url,
     $cacher,
     $supprimer
 ) {
@@ -50,14 +51,28 @@ function modifier_categorie(
             $new_image_blob = null; // Garde l'image actuelle si aucune nouvelle image n'est fournie
         }
 
+        if ($new_nom == "") {
+            $new_nom = null;
+        }
+
+        if ($new_description == "") {
+            $new_description = null;
+        }
+
+        if ($new_url == "") {
+            $new_url = null;
+        }
+
         // Mise à jour de la catégorie
-        $sql3 = "UPDATE sae_303_categorie SET image = COALESCE(:new_image_blob, image), nom = COALESCE(:new_nom, nom), description = COALESCE(:new_description, description), visible = :visible WHERE idcat = :categorie_id";
+        $sql3 = "UPDATE sae_303_categorie SET image = COALESCE(:new_image_blob, image), nom = COALESCE(:new_nom, nom), description = COALESCE(:new_description, description), url = COALESCE(:new_url, url), visible = :visible WHERE idcat = :categorie_id";
+
         $stmt3 = $pdo->prepare($sql3);
 
         $stmt3->execute([
             ':new_image_blob' => $new_image_blob,
             ':new_nom' => $new_nom, 
             ':new_description' => $new_description,
+            ':new_url' => $new_url,
             ':visible' => $cacher ? 0 : 1,
             ':categorie_id' => $categorie_id,
         ]);
